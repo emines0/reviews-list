@@ -43,6 +43,24 @@ const Review = () => {
     })
   }
 
+  const randomPerson = () => {
+    let randomNumber = Math.floor(Math.random() * people.length)
+    /*
+     * Get the random rounded number from 0 to array.length
+     */
+    if (randomNumber === index) {
+      randomNumber = index + 1
+    }
+    /*
+     * If current index is same as randomNumber add 1
+     * to avoid have same review couple of times
+     */
+    setIndex(checkNumber(randomNumber))
+    /*
+     * Set index to checked random number
+     */
+  }
+
   return (
     <article className='review'>
       <div className='img-container'>
@@ -62,7 +80,9 @@ const Review = () => {
           <FaChevronRight />
         </button>
       </div>
-      <button className='random-btn'>suprise me</button>
+      <button className='random-btn' onClick={randomPerson}>
+        suprise me
+      </button>
     </article>
   )
 }
