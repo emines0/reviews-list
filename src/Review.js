@@ -10,17 +10,36 @@ const Review = () => {
    * while index will be changed, the review will change too
    */
 
+  const checkNumber = (number) => {
+    if (number > people.length - 1) {
+      /*
+       * If my number is bigger then length of the people array return 0
+       */
+      return 0
+    }
+    if (number < 0) {
+      /*
+       * If my number is smaller then 0 (beginning of the array) return the last item of the array
+       */
+      return people.length - 1
+    }
+    /*
+     * If my number is neither of previous case return number
+     */
+    return number
+  }
+
   const nextPerson = () => {
     setIndex((index) => {
       let newIndex = index + 1
-      return newIndex
+      return checkNumber(newIndex)
     })
   }
 
   const prevPerson = () => {
     setIndex((index) => {
       let newIndex = index - 1
-      return newIndex
+      return checkNumber(newIndex)
     })
   }
 
